@@ -7,7 +7,7 @@ import {
   useEffect,
   useSyncExternalStore,
 } from "react";
-import { dict, type Locale } from "@/lib/i18n";
+import { dict, type Locale } from "@/lib/content";
 
 const KEY = "lang";
 const listeners = new Set<() => void>();

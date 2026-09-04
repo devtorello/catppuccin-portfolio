@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { site } from "@/lib/config";
+import { site } from "@/lib/content";
 import { useLang } from "@/components/language-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageToggle } from "@/components/language-toggle";

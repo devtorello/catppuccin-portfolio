@@ -2,7 +2,14 @@
 
 A minimal, bilingual developer portfolio built with the [Catppuccin](https://catppuccin.com) palette — Latte in light mode, Macchiato in dark. Fast, static, and easy to make your own.
 
+![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-06B6D4?logo=tailwindcss&logoColor=white)
+![Catppuccin](https://img.shields.io/badge/theme-Catppuccin-cba6f7)
+![License: MIT](https://img.shields.io/badge/license-MIT-40A02B)
+
 **Live demo:** [vitorello.dev](https://vitorello.dev)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdevtorello%2Fcatppuccin-portfolio)
 
 ![Portfolio preview](https://vitorello.dev/opengraph-image)
 
@@ -37,17 +44,18 @@ Almost everything lives in a few files. Edit these and you have your own site:
 
 | What | Where |
 |------|-------|
-| **Name, company, URL, socials, SEO** | `lib/config.ts` |
-| **All copy (EN + PT)** | `lib/i18n.ts` — hero, outcomes, blog labels |
+| **All text** — name, company, links, SEO, and every bit of copy (EN + PT) | **`lib/content.ts`** — one file, fully commented |
 | **Your photo** | `public/avatar.jpeg` (see note below) |
 | **Colors / theme** | `app/globals.css` — swap the Catppuccin flavors or your own palette |
 | **OG share image** | `app/opengraph-image.tsx` — text, colors, layout |
 | **Favicon** | `app/icon.tsx` — the letter and color |
 | **Blog posts** | `content/writing/*.mdx` — copy `_template.mdx` to start |
 
+> Start with **`lib/content.ts`** — it opens with a checklist and every section is labeled.
+
 ### One language only?
 
-Prefer a single language? In `lib/i18n.ts`, keep just the `en` (or `pt`) block, and remove the `LanguageToggle` from `components/site-header.tsx`.
+Prefer a single language? In `lib/content.ts`, keep just the `en` (or `pt`) block in `dict`, and remove the `LanguageToggle` from `components/site-header.tsx`.
 
 ### About the photo
 

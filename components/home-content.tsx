@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { site } from "@/lib/config";
-import { tools } from "@/lib/i18n";
+import { site, tools } from "@/lib/content";
 import { useLang } from "@/components/language-provider";
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/icons";
 import type { PostMeta } from "@/lib/posts";

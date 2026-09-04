@@ -1,7 +1,42 @@
-export type Locale = "en" | "pt";
+/* ────────────────────────────────────────────────────────────────────────
+ *  👋 EDIT EVERYTHING HERE
+ *
+ *  This is the only file you need to touch to make the site yours.
+ *  Checklist:
+ *    1. `site`        → your name, company, domain, social links, SEO text
+ *    2. `tools`       → the tech you want listed under "Tools"
+ *    3. `dict.en`     → all English copy (hero, outcomes, blog labels, …)
+ *    4. `dict.pt`     → same in Portuguese (or delete it — see README)
+ *
+ *  Other things to change live in their own files (see README → "Make it yours"):
+ *    • your photo   → public/avatar.jpeg
+ *    • colors       → app/globals.css
+ *    • OG image     → app/opengraph-image.tsx
+ *    • favicon      → app/icon.tsx
+ *    • blog posts   → content/writing/*.mdx
+ * ──────────────────────────────────────────────────────────────────────── */
 
+// ── 1. Site metadata ──────────────────────────────────────────────────────
+export const site = {
+  name: "Vitorello",
+  company: "Bemobi Wave",
+  url: "https://vitorello.dev",
+  careers: "https://wave-by-bemobi.gupy.io/", // "Working at …" CTA target
+  seoDescription:
+    "Vitorello — Technical Lead who's still in the code. I build backends, infrastructure, and AI systems that hold up, and care a lot about testing. Grab a coffee?",
+  socials: {
+    github: "https://github.com/devtorello",
+    linkedin: "https://www.linkedin.com/in/vitorellotatiana/",
+    email: "mailto:vitorellotts@gmail.com",
+  },
+};
+
+// ── 2. Tools shown under the expertise section ────────────────────────────
 export const tools =
   "Node.js · TypeScript · GCP · OCI · Pulumi · Terraform · PostgreSQL";
+
+// ── 3 + 4. Copy, per language ─────────────────────────────────────────────
+export type Locale = "en" | "pt";
 
 type Dict = {
   nav: { expertise: string; writing: string };

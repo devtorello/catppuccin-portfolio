@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { site } from "@/lib/config";
+import { site } from "@/lib/content";
 
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
@@ -55,6 +55,7 @@ export default async function OpengraphImage() {
           {avatar ? (
             <img
               src={avatar}
+              alt=""
               width={132}
               height={132}
               style={{

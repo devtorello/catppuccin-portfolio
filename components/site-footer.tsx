@@ -1,6 +1,6 @@
 "use client";
 
-import { site } from "@/lib/config";
+import { site } from "@/lib/content";
 import { useLang } from "@/components/language-provider";
 
 export function SiteFooter() {
