@@ -13,6 +13,10 @@ A minimal, bilingual developer portfolio built with the [Catppuccin](https://cat
 
 ![Portfolio preview](https://vitorello.dev/opengraph-image)
 
+| Light — Catppuccin Latte | Dark — Catppuccin Macchiato |
+|:---:|:---:|
+| ![Light mode](./docs/screenshot-light.png) | ![Dark mode](./docs/screenshot-dark.png) |
+
 ## Features
 
 - 🎨 **Catppuccin theming** — Latte (light) + Macchiato (dark), one accent + highlight
