@@ -1,6 +1,9 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/config";
 
+export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "Vitorello — Technical Lead";
@@ -12,7 +15,18 @@ const muted = "#a5adcb";
 const green = "#a6da95";
 const rainbow = ["#ed8796", "#f5a97f", "#eed49f", "#a6da95", "#8aadf4", "#c6a0f6"];
 
-export default function OpengraphImage() {
+async function loadAvatar(): Promise<string | null> {
+  try {
+    const buf = await readFile(join(process.cwd(), "public/avatar.jpeg"));
+    return `data:image/jpeg;base64,${buf.toString("base64")}`;
+  } catch {
+    return null;
+  }
+}
+
+export default async function OpengraphImage() {
+  const avatar = await loadAvatar();
+
   return new ImageResponse(
     (
       <div
@@ -28,8 +42,28 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", fontSize: 34, color: green, letterSpacing: -1 }}>
-          {site.name.toLowerCase()}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <div style={{ display: "flex", fontSize: 34, color: green, letterSpacing: -1 }}>
+            {site.name.toLowerCase()}
+          </div>
+          {avatar ? (
+            <img
+              src={avatar}
+              width={132}
+              height={132}
+              style={{
+                borderRadius: 9999,
+                objectFit: "cover",
+                border: `4px solid ${green}`,
+              }}
+            />
+          ) : null}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -37,7 +71,7 @@ export default function OpengraphImage() {
             Technical Lead
           </div>
           <div style={{ display: "flex", marginTop: 28, fontSize: 32, color: muted }}>
-            Backends · Infrastructure · AI systems · Testing
+            Backends · Infrastructure · Agentic applications · Quality
           </div>
         </div>
 

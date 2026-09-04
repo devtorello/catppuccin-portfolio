@@ -45,7 +45,7 @@ export const dict: Record<Locale, Dict> = {
       title: "Grab a coffee.",
       tagline: "I lead engineering teams and still can't stay out of the codebase.",
       intro:
-        "I help teams move fast and sleep well: reliable systems, clear decisions, fewer fires. I take quality as seriously as Demon Slayer and Shinee.",
+        "I help teams move fast and sleep well: reliable systems, clear decisions, fewer fires. I take quality as seriously as Demon Slayer, Red Velvet and Shinee.",
       pride:
         "I proudly stand for LGBTQIA+ rights and inclusion — in tech, and everywhere.",
       getInTouch: "Get in touch",
@@ -127,7 +127,7 @@ export const dict: Record<Locale, Dict> = {
       title: "Pega um café.",
       tagline: "Lidero times de engenharia e ainda assim não largo o código.",
       intro:
-        "Ajudo times a irem rápido sem perder o sono: sistemas confiáveis, decisões claras, menos incêndios. Levo qualidade tão a sério quanto Demon Slayer e Shinee.",
+        "Ajudo times a irem rápido sem perder o sono: sistemas confiáveis, decisões claras, menos incêndios. Levo qualidade tão a sério quanto Demon Slayer, Red Velvet e Shinee.",
       pride:
         "Defendo com orgulho os direitos e a inclusão LGBTQIA+ — na tecnologia e em todo canto.",
       getInTouch: "Fala comigo",
