@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# catppuccin-portfolio
 
-## Getting Started
+A minimal, bilingual developer portfolio built with the [Catppuccin](https://catppuccin.com) palette — Latte in light mode, Macchiato in dark. Fast, static, and easy to make your own.
 
-First, run the development server:
+**Live demo:** [vitorello.dev](https://vitorello.dev)
+
+![Portfolio preview](https://vitorello.dev/opengraph-image)
+
+## Features
+
+- 🎨 **Catppuccin theming** — Latte (light) + Macchiato (dark), one accent + highlight
+- 🌗 **Light / dark toggle** — system-aware, remembers your choice (`next-themes`)
+- 🌐 **Bilingual** — English / Portuguese toggle, all copy in one dictionary
+- ✍️ **MDX blog** — drop a `.mdx` file in `content/writing/`, it just appears
+- 🖼️ **Dynamic OG image** — generated with `next/og`, no design tool needed
+- 🔎 **SEO ready** — sitemap, robots, Open Graph, favicon, all generated
+- ⚡ **Static & fast** — Next.js 16 App Router + Tailwind CSS v4
+
+## Tech stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · next-themes · next-mdx-remote
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/devtorello/catppuccin-portfolio.git
+cd catppuccin-portfolio
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Make it yours
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Almost everything lives in a few files. Edit these and you have your own site:
 
-## Learn More
+| What | Where |
+|------|-------|
+| **Name, company, URL, socials, SEO** | `lib/config.ts` |
+| **All copy (EN + PT)** | `lib/i18n.ts` — hero, outcomes, blog labels |
+| **Your photo** | `public/avatar.jpeg` (see note below) |
+| **Colors / theme** | `app/globals.css` — swap the Catppuccin flavors or your own palette |
+| **OG share image** | `app/opengraph-image.tsx` — text, colors, layout |
+| **Favicon** | `app/icon.tsx` — the letter and color |
+| **Blog posts** | `content/writing/*.mdx` — copy `_template.mdx` to start |
 
-To learn more about Next.js, take a look at the following resources:
+### One language only?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Prefer a single language? In `lib/i18n.ts`, keep just the `en` (or `pt`) block, and remove the `LanguageToggle` from `components/site-header.tsx`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### About the photo
 
-## Deploy on Vercel
+This repo keeps the owner's personal photo **out of git** (`public/avatar.jpeg` is in `.gitignore`) and ships it to production via the Vercel CLI (`.vercelignore` re-includes it). You have two options:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Commit your photo** (simplest): remove the `public/avatar.jpeg` line from `.gitignore`, delete `.vercelignore`, and deploy with Vercel's Git integration for automatic deploys.
+- **Keep it private** (like this repo): leave the ignores as-is, keep `public/avatar.jpeg` locally, and deploy with `vercel --prod`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Don't want a photo at all? Remove the `<Image>` block at the top of `components/home-content.tsx`.
+
+## Deploy
+
+Deploy on [Vercel](https://vercel.com) — import the repo (or run `vercel --prod`). Add your custom domain in the project settings and point a DNS `A` record at `76.76.21.21`.
+
+## Credits
+
+- [Catppuccin](https://catppuccin.com) for the palette 💚
+- [Next.js](https://nextjs.org) · [Tailwind CSS](https://tailwindcss.com)
+
+## License
+
+[MIT](./LICENSE) — do whatever you like. A link back is appreciated but not required.
