@@ -19,8 +19,10 @@ pnpm dev
 ## Before opening a PR
 
 ```bash
-pnpm lint    # must pass
-pnpm build   # must succeed
+pnpm lint      # must pass
+pnpm test      # unit tests must pass
+pnpm test:e2e  # end-to-end tests must pass
+pnpm build     # must succeed
 ```
 
 - Keep PRs focused — one change per PR.

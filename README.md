@@ -2,6 +2,7 @@
 
 A minimal, bilingual developer portfolio built with the [Catppuccin](https://catppuccin.com) palette — Latte in light mode, Macchiato in dark. Fast, static, and easy to make your own.
 
+[![CI](https://github.com/devtorello/catppuccin-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/devtorello/catppuccin-portfolio/actions/workflows/ci.yml)
 ![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-06B6D4?logo=tailwindcss&logoColor=white)
 ![Catppuccin](https://img.shields.io/badge/theme-Catppuccin-cba6f7)
@@ -10,8 +11,6 @@ A minimal, bilingual developer portfolio built with the [Catppuccin](https://cat
 **Live demo:** [vitorello.dev](https://vitorello.dev)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdevtorello%2Fcatppuccin-portfolio)
-
-![Portfolio preview](https://vitorello.dev/opengraph-image)
 
 | Light — Catppuccin Latte | Dark — Catppuccin Macchiato |
 |:---:|:---:|
@@ -69,6 +68,21 @@ This repo keeps the owner's personal photo **out of git** (`public/avatar.jpeg` 
 - **Keep it private** (like this repo): leave the ignores as-is, keep `public/avatar.jpeg` locally, and deploy with `vercel --prod`.
 
 Don't want a photo at all? Remove the `<Image>` block at the top of `components/home-content.tsx`.
+
+## Testing
+
+A small pyramid keeps the template honest:
+
+```bash
+pnpm test       # unit — content/i18n parity + blog logic (Vitest)
+pnpm test:e2e   # end-to-end — render, language + theme toggle, routes (Playwright)
+pnpm lint       # eslint
+```
+
+- **Unit** (`lib/*.test.ts`) — checks the EN/PT dictionaries stay in sync (same keys, no empty strings) and that the blog reader sorts and hides `_`-prefixed files.
+- **E2E** (`e2e/*.spec.ts`) — loads the real site, flips the language and theme, and confirms `sitemap.xml`, `robots.txt`, the OG image, and the favicon all respond.
+
+Both run on every push via [GitHub Actions](.github/workflows/ci.yml).
 
 ## Deploy
 
