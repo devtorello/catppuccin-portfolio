@@ -86,7 +86,7 @@ export const dict: Record<Locale, Dict> = {
     },
     wave: {
       label: "Working at Wave",
-      heading: "Want to build this stuff with me?",
+      heading: "Want to build cool stuff together?",
       body: "We're a company doing genuinely hard, genuinely fun things: agentic systems at real scale, lots of autonomy, and teammates who actually care. It's remote, it's fast, and it's rarely boring. If that sounds like your kind of thing, come say hi.",
       cta: "See open roles →",
     },
@@ -168,7 +168,7 @@ export const dict: Record<Locale, Dict> = {
     },
     wave: {
       label: "Trabalhar na Wave",
-      heading: "Quer construir essas coisas comigo?",
+      heading: "Quer construir coisas legais com a gente?",
       body: "Nós somos uma empresa que faz coisas difíceis e divertidas de verdade: aplicações agênticas em escala real, bastante autonomia e gente que se importa. É remoto, é rápido e raramente é chato. Se isso tem a ver com você, chega junto.",
       cta: "Ver vagas →",
     },
