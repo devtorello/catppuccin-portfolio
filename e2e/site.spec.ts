@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { site } from "../lib/content";
 
 test("home renders the hero", async ({ page }) => {
   await page.goto("/");
@@ -42,10 +43,17 @@ test("primary links point to the right places", async ({ page }) => {
   await expect(
     page.getByRole("link", { name: "GitHub" }).first(),
   ).toHaveAttribute("href", /github\.com/);
-  await expect(page.getByRole("link", { name: /See open roles/ })).toHaveAttribute(
-    "href",
-    /gupy\.io/,
-  );
+});
+
+test("optional 'Working at' section respects the flag", async ({ page }) => {
+  await page.goto("/");
+  const cta = page.getByRole("link", { name: /See open roles/ });
+  if (site.showWorkingAt) {
+    await expect(cta).toBeVisible();
+    await expect(cta).toHaveAttribute("href", site.careers);
+  } else {
+    await expect(cta).toHaveCount(0);
+  }
 });
 
 test("writing page shows the empty state", async ({ page }) => {

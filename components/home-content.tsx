@@ -170,22 +170,24 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
         )}
       </section>
 
-      {/* Working at Wave */}
-      <section className="flex flex-col gap-4 rounded-xl border border-accent/30 bg-card p-6">
-        <span className="font-mono text-xs text-accent">{t.wave.label}</span>
-        <h2 className="text-2xl font-semibold tracking-tight">
-          {t.wave.heading}
-        </h2>
-        <p className="leading-relaxed text-muted">{t.wave.body}</p>
-        <a
-          href={site.careers}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-1 w-fit rounded-full bg-accent px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
-        >
-          {t.wave.cta}
-        </a>
-      </section>
+      {/* Working at … (optional — toggle with site.showWorkingAt) */}
+      {site.showWorkingAt && (
+        <section className="flex flex-col gap-4 rounded-xl border border-accent/30 bg-card p-6">
+          <span className="font-mono text-xs text-accent">{t.workingAt.label}</span>
+          <h2 className="text-2xl font-semibold tracking-tight">
+            {t.workingAt.heading}
+          </h2>
+          <p className="leading-relaxed text-muted">{t.workingAt.body}</p>
+          <a
+            href={site.careers}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 w-fit rounded-full bg-accent px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+          >
+            {t.workingAt.cta}
+          </a>
+        </section>
+      )}
     </div>
   );
 }

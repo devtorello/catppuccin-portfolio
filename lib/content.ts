@@ -21,6 +21,8 @@ export const site = {
   name: "Vitorello",
   company: "Bemobi Wave",
   url: "https://vitorello.dev",
+  // Set to false to hide the "Working at …" section (the hiring CTA at the bottom).
+  showWorkingAt: true,
   careers: "https://wave-by-bemobi.gupy.io/", // "Working at …" CTA target
   seoDescription:
     "Vitorello — Technical Lead who's still in the code. I build backends, infrastructure, and AI systems that hold up, and care a lot about testing. Grab a coffee?",
@@ -56,7 +58,7 @@ type Dict = {
     toolsLabel: string;
   };
   beyond: { label: string; text: string };
-  wave: { label: string; heading: string; body: string; cta: string };
+  workingAt: { label: string; heading: string; body: string; cta: string };
   certifications: { label: string; items: { label: string; detail: string }[] };
   languages: { label: string; items: { name: string; level: string }[] };
   writing: {
@@ -119,7 +121,7 @@ export const dict: Record<Locale, Dict> = {
       label: "Beyond code",
       text: "When I'm not coding, I'm probably playing bass, deep in a philosophy book, or a few episodes into an anime I swore I'd 'just start.' Music, games, and good stories keep me curious.",
     },
-    wave: {
+    workingAt: {
       label: "Working at Wave",
       heading: "Want to build cool stuff together?",
       body: "We're a company doing genuinely hard, genuinely fun things: agentic systems at real scale, lots of autonomy, and teammates who actually care. It's remote, it's fast, and it's rarely boring. If that sounds like your kind of thing, come say hi.",
@@ -201,7 +203,7 @@ export const dict: Record<Locale, Dict> = {
       label: "Além do código",
       text: "Quando não estou codando, provavelmente estou com o baixo na mão, no meio de um livro de filosofia, ou a alguns episódios de um anime que jurei que 'só ia começar'. Música, games e boas histórias mantêm minha curiosidade viva.",
     },
-    wave: {
+    workingAt: {
       label: "Trabalhar na Wave",
       heading: "Quer construir coisas legais com a gente?",
       body: "Nós somos uma empresa que faz coisas difíceis e divertidas de verdade: aplicações agênticas em escala real, bastante autonomia e gente que se importa. É remoto, é rápido e raramente é chato. Se isso tem a ver com você, chega junto.",
