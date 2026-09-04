@@ -70,8 +70,8 @@ export default async function OpengraphImage() {
           <div style={{ display: "flex", fontSize: 88, fontWeight: 700, letterSpacing: -2, lineHeight: 1.1 }}>
             Technical Lead
           </div>
-          <div style={{ display: "flex", marginTop: 28, fontSize: 32, color: muted }}>
-            Backends · Infrastructure · Agentic applications · Quality
+          <div style={{ display: "flex", marginTop: 28, fontSize: 27, color: muted }}>
+            Back-ends · Infrastructure · Agentic Applications · Quality Engineering
           </div>
         </div>
 
