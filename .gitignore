@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal photo — served on the live site, kept out of the public repo
+public/avatar.jpeg
