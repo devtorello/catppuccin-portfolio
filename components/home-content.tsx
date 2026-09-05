@@ -43,24 +43,27 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
         <div className="flex flex-wrap gap-4 pt-2 text-sm">
           <a
             href={site.socials.email}
+            aria-label={t.hero.getInTouch}
             className="flex items-center gap-2 rounded-full bg-foreground px-4 py-2 font-medium text-background transition-opacity hover:opacity-90"
           >
             <MailIcon />
-            {t.hero.getInTouch}
+            <span className="hidden sm:inline">{t.hero.getInTouch}</span>
           </a>
           <a
             href={site.socials.linkedin}
+            aria-label="LinkedIn"
             className="flex items-center gap-2 rounded-full border px-4 py-2 font-medium transition-colors hover:border-accent hover:text-accent"
           >
             <LinkedinIcon />
-            LinkedIn
+            <span className="hidden sm:inline">LinkedIn</span>
           </a>
           <a
             href={site.socials.github}
+            aria-label="GitHub"
             className="flex items-center gap-2 rounded-full border px-4 py-2 font-medium transition-colors hover:border-accent hover:text-accent"
           >
             <GithubIcon />
-            GitHub
+            <span className="hidden sm:inline">GitHub</span>
           </a>
         </div>
         <div className="flex gap-3 rounded-xl border border-accent/30 bg-card p-4">
