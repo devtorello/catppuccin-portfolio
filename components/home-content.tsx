@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { track } from "@vercel/analytics";
 import { site, tools } from "@/lib/content";
 import { useLang } from "@/components/language-provider";
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/icons";
@@ -44,6 +45,7 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
           <a
             href={site.socials.email}
             aria-label={t.hero.getInTouch}
+            onClick={() => track("click_email")}
             className="flex items-center gap-2 rounded-full bg-foreground px-4 py-2 font-medium text-background transition-opacity hover:opacity-90"
           >
             <MailIcon />
@@ -52,6 +54,7 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
           <a
             href={site.socials.linkedin}
             aria-label="LinkedIn"
+            onClick={() => track("click_linkedin")}
             className="flex items-center gap-2 rounded-full border px-4 py-2 font-medium transition-colors hover:border-accent hover:text-accent"
           >
             <LinkedinIcon />
@@ -60,6 +63,7 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
           <a
             href={site.socials.github}
             aria-label="GitHub"
+            onClick={() => track("click_github")}
             className="flex items-center gap-2 rounded-full border px-4 py-2 font-medium transition-colors hover:border-accent hover:text-accent"
           >
             <GithubIcon />
@@ -185,6 +189,7 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
             href={site.careers}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => track("click_careers")}
             className="mt-1 w-fit rounded-full bg-accent px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
           >
             {t.workingAt.cta}
