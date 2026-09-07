@@ -60,6 +60,15 @@ Almost everything lives in a few files. Edit these and you have your own site:
 
 Prefer a single language? In `lib/content.ts`, keep just the `en` (or `pt`) block in `dict`, and remove the `LanguageToggle` from `components/site-header.tsx`.
 
+### How the bilingual toggle works (and its trade-off)
+
+The language toggle is **client-side by design**. Both dictionaries ship to the browser and the toggle swaps them instantly via `localStorage` — no extra routes, no page reloads, no build config. The deliberate trade-off:
+
+- **English is the canonical, server-rendered language.** The initial HTML (and therefore what search engines index) is always English. There are no per-locale URLs (`/pt`, `/en`) and no `hreflang`.
+- **Portuguese is a client-side convenience**, not an indexed variant. Great for readers, invisible to crawlers.
+
+For a personal portfolio this is usually the right call — one canonical language for SEO, a friendly toggle for humans. **If you need both languages indexed** (e.g. a content site chasing search traffic in two languages), migrate to App Router locale segments (`app/[locale]/…`) so each language is a real, server-rendered URL with `hreflang` alternates. That's a larger change, intentionally left out to keep this template zero-config.
+
 ### About the photo
 
 This repo keeps the owner's personal photo **out of git** (`public/avatar.jpeg` is in `.gitignore`) and ships it to production via the Vercel CLI (`.vercelignore` re-includes it). You have two options:
@@ -86,7 +95,7 @@ Both run on every push via [GitHub Actions](.github/workflows/ci.yml).
 
 ## Deploy
 
-Deploy on [Vercel](https://vercel.com) — import the repo (or run `vercel --prod`). Add your custom domain in the project settings and point a DNS `A` record at `76.76.21.21`.
+Deploy on [Vercel](https://vercel.com) — import the repo (or run `vercel --prod`). Add your custom domain in the project settings, then follow the DNS records Vercel shows you (typically an `A` record at `216.198.79.1` for an apex domain, or a `CNAME` to `cname.vercel-dns.com` for a subdomain). Always use the exact values from your project's Domains tab — they can change.
 
 ## Credits
 

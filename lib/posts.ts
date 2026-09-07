@@ -1,8 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
+import { cache } from "react";
 import matter from "gray-matter";
 
 const POSTS_DIR = path.join(process.cwd(), "content/writing");
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 export type PostMeta = {
   slug: string;
@@ -13,7 +15,7 @@ export type PostMeta = {
 
 export type Post = PostMeta & { content: string };
 
-function readAll(): Post[] {
+const readAll = cache((): Post[] => {
   if (!fs.existsSync(POSTS_DIR)) return [];
   return fs
     .readdirSync(POSTS_DIR)
@@ -22,15 +24,21 @@ function readAll(): Post[] {
       const slug = file.replace(/\.mdx$/, "");
       const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
       const { data, content } = matter(raw);
+      const date = data.date ?? "";
+      if (date && !ISO_DATE.test(date)) {
+        console.warn(
+          `[posts] ${file}: date "${date}" is not ISO (YYYY-MM-DD); sorting may be wrong.`,
+        );
+      }
       return {
         slug,
         title: data.title ?? slug,
-        date: data.date ?? "",
+        date,
         summary: data.summary ?? "",
         content,
       };
     });
-}
+});
 
 export function getAllPosts(): PostMeta[] {
   return readAll()

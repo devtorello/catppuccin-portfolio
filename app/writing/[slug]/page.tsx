@@ -1,8 +1,14 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 import { getAllPosts, getPost } from "@/lib/posts";
 import { WritingBackLink } from "@/components/writing-back-link";
+
+const prettyCodeOptions = {
+  theme: { light: "catppuccin-latte", dark: "catppuccin-macchiato" },
+  keepBackground: false,
+} as const;
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -32,7 +38,12 @@ export default async function PostPage({
         <p className="font-mono text-xs text-muted">{post.date}</p>
       </header>
       <div className="prose">
-        <MDXRemote source={post.content} />
+        <MDXRemote
+          source={post.content}
+          options={{
+            mdxOptions: { rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]] },
+          }}
+        />
       </div>
     </article>
   );
