@@ -17,7 +17,7 @@ export function SiteHeader() {
       >
         {site.name.toLowerCase()}
       </Link>
-      <nav className="flex items-center gap-4 text-sm text-muted sm:gap-6">
+      <nav aria-label="Primary navigation" className="flex items-center gap-4 text-sm text-muted sm:gap-6">
         <Link href="/#expertise" className="hover:text-highlight">
           {t.nav.expertise}
         </Link>

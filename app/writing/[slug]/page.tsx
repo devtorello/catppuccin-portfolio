@@ -35,7 +35,9 @@ export default async function PostPage({
       <WritingBackLink />
       <header className="flex flex-col gap-3">
         <h1 className="text-3xl font-semibold tracking-tight">{post.title}</h1>
-        <p className="font-mono text-xs text-muted">{post.date}</p>
+        <time dateTime={post.date} className="font-mono text-xs text-muted">
+          {post.date}
+        </time>
       </header>
       <div className="prose">
         <MDXRemote

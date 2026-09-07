@@ -33,9 +33,12 @@ export function WritingIndex({ posts }: { posts: PostMeta[] }) {
                 <h2 className="font-medium group-hover:text-accent">
                   {post.title}
                 </h2>
-                <span className="shrink-0 font-mono text-xs text-muted">
+                <time
+                  dateTime={post.date}
+                  className="shrink-0 font-mono text-xs text-muted"
+                >
                   {post.date}
-                </span>
+                </time>
               </div>
               <p className="text-sm text-muted">{post.summary}</p>
             </Link>

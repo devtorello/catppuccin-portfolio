@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { track } from "@vercel/analytics";
 import { site, tools } from "@/lib/content";
 import { useLang } from "@/components/language-provider";
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/icons";
 import type { PostMeta } from "@/lib/posts";
+import { TrackedLink } from "@/components/tracked-link";
 
 export function HomeContent({ posts }: { posts: PostMeta[] }) {
   const { t } = useLang();
@@ -21,7 +21,8 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
             alt={site.name}
             width={192}
             height={192}
-            priority
+            preload
+            sizes="96px"
             className="h-24 w-24 shrink-0 rounded-full border object-cover object-center"
           />
           <div className="flex flex-col gap-1">
@@ -42,33 +43,33 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
           {t.hero.pride}
         </p>
         <div className="flex flex-wrap gap-4 pt-2 text-sm">
-          <a
+          <TrackedLink
+            event="click_email"
             href={site.socials.email}
             aria-label={t.hero.getInTouch}
-            onClick={() => track("click_email")}
             className="flex items-center gap-2 rounded-full bg-foreground px-4 py-2 font-medium text-background transition-opacity hover:opacity-90"
           >
             <MailIcon />
             <span className="hidden sm:inline">{t.hero.getInTouch}</span>
-          </a>
-          <a
+          </TrackedLink>
+          <TrackedLink
+            event="click_linkedin"
             href={site.socials.linkedin}
             aria-label="LinkedIn"
-            onClick={() => track("click_linkedin")}
             className="flex items-center gap-2 rounded-full border px-4 py-2 font-medium transition-colors hover:border-accent hover:text-accent"
           >
             <LinkedinIcon />
             <span className="hidden sm:inline">LinkedIn</span>
-          </a>
-          <a
+          </TrackedLink>
+          <TrackedLink
+            event="click_github"
             href={site.socials.github}
             aria-label="GitHub"
-            onClick={() => track("click_github")}
             className="flex items-center gap-2 rounded-full border px-4 py-2 font-medium transition-colors hover:border-accent hover:text-accent"
           >
             <GithubIcon />
             <span className="hidden sm:inline">GitHub</span>
-          </a>
+          </TrackedLink>
         </div>
         <div className="flex gap-3 rounded-xl border border-accent/30 bg-card p-4">
           <span className="mt-0.5 font-mono text-xs text-accent">
@@ -164,9 +165,12 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
                   <h3 className="font-medium group-hover:text-accent">
                     {post.title}
                   </h3>
-                  <span className="shrink-0 font-mono text-xs text-muted">
+                  <time
+                    dateTime={post.date}
+                    className="shrink-0 font-mono text-xs text-muted"
+                  >
                     {post.date}
-                  </span>
+                  </time>
                 </div>
                 <p className="text-sm text-muted">{post.summary}</p>
               </Link>
@@ -185,15 +189,15 @@ export function HomeContent({ posts }: { posts: PostMeta[] }) {
             {t.workingAt.heading}
           </h2>
           <p className="leading-relaxed text-muted">{t.workingAt.body}</p>
-          <a
+          <TrackedLink
+            event="click_careers"
             href={site.careers}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => track("click_careers")}
             className="mt-1 w-fit rounded-full bg-accent px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
           >
             {t.workingAt.cta}
-          </a>
+          </TrackedLink>
         </section>
       )}
     </div>
