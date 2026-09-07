@@ -1,0 +1,34 @@
+---
+title: "How I finally shipped my own portfolio"
+date: "2026-09-07"
+summary: "I stalled on a portfolio for years. What unblocked me wasn't a framework — it was picking something that already felt like mine."
+---
+
+I stalled on my own portfolio for years. Every attempt felt like a copy of a copy — competent, forgettable, nothing that looked like *me*.
+
+What unblocked me was small: I stopped asking "how do I make this good?" and asked "how do I make this mine?" I've used [Catppuccin](https://catppuccin.com) in my editor and terminal since 2021, so I built the whole thing around it. Coffee, cats, soft colors. Suddenly the project had a point of view, and it shipped.
+
+## Content as data
+
+The one decision that kept it maintainable: all the copy lives in a single typed object, not scattered across components. Adding a language or fixing a typo means touching one file.
+
+```ts
+export const site = {
+  name: "Vitorello",
+  company: "Bemobi Wave",
+  url: "https://vitorello.dev",
+} as const;
+
+export const dict = {
+  en: { hero: { title: "Grab a coffee." } },
+  pt: { hero: { title: "Pega um café." } },
+} as const;
+```
+
+A tiny test asserts both languages share the same key structure, so a half-translated dictionary fails in CI instead of in production.
+
+## It's open source
+
+I left the repo public so anyone stuck on the same wall can start from something instead of a blank page. Fork it, make it yours, open a PR if you improve something.
+
+The takeaway I keep coming back to: the blocker was never *knowing how* — it was building something I actually cared about.

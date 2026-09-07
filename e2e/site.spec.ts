@@ -56,9 +56,35 @@ test("optional 'Working at' section respects the flag", async ({ page }) => {
   }
 });
 
-test("writing page shows the empty state", async ({ page }) => {
+test("writing page lists posts and renders highlighted code", async ({
+  page,
+}) => {
   await page.goto("/writing");
-  await expect(page.getByText("No posts yet.")).toBeVisible();
+  const firstPost = page.locator("main a[href^='/writing/']").first();
+  await expect(firstPost).toBeVisible();
+  await firstPost.click();
+
+  const figure = page.locator("[data-rehype-pretty-code-figure]").first();
+  await expect(figure).toBeVisible();
+  await expect(figure.locator("pre[data-theme]")).toHaveAttribute(
+    "data-theme",
+    /catppuccin-latte catppuccin-macchiato/,
+  );
+  await expect(
+    figure.locator("span[style*='--shiki-dark']").first(),
+  ).toBeAttached();
+});
+
+test("unknown route renders the custom 404", async ({ page }) => {
+  const res = await page.goto("/no-such-page");
+  expect(res?.status()).toBe(404);
+  await expect(
+    page.getByRole("heading", { name: "This page went for coffee." }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: "Back home" })).toHaveAttribute(
+    "href",
+    "/",
+  );
 });
 
 test("SEO + asset endpoints respond 200", async ({ request }) => {
